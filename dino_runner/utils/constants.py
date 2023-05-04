@@ -1,5 +1,7 @@
 import pygame
 import os
+pygame.mixer.init()
+
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
@@ -26,9 +28,15 @@ RUNNING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2Hammer.png")),
 ]
 
+RUNNING_SKATE = [
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoSkate01.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoSkate02.png"))
+]
+
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
 JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
+JUMPING_SKATE = pygame.image.load(os.path.join(IMG_DIR, "Dino/SkateJump.png"))
 
 DUCKING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1.png")),
@@ -43,6 +51,11 @@ DUCKING_SHIELD = [
 DUCKING_HAMMER = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2Hammer.png")),
+]
+
+DUCKING_SKATE = [
+     pygame.image.load(os.path.join(IMG_DIR, "Dino/SkateDucking01.png")),
+     pygame.image.load(os.path.join(IMG_DIR, "Dino/SkateDucking02.png"))
 ]
 
 DEAD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDead.png"))
@@ -67,6 +80,7 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+SKATE = pygame.image.load(os.path.join(IMG_DIR, 'Other/Skate.jpg'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
@@ -74,5 +88,18 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = 'Shield'
+SKATE_TYPE = 'Skate'
 
 FONT_STYLE = 'freesansbold.ttf'
+
+JUMP_SOUND = pygame.mixer.Sound("DinoJump.mp3")
+
+DEAD_SOUND = pygame.mixer.Sound("DinoDeath.mp3")
+
+SPEED_SOUND = pygame.mixer.Sound("SpeedSound.mp3")
+
+SHIELD_SOUND = pygame.mixer.Sound("ShieldSound.mp3")
+
+SKATE_SOUND = pygame.mixer.Sound("SkateSound.mp3")
+
+BACKGROUND_SOUND = pygame.mixer.Sound("BackgroundMusic.mp3")

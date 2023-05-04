@@ -6,10 +6,10 @@ from dino_runner.utils.constants import BIRD
 
 
 class Bird (Obstacle):
-    BIRD_HEIGHTS = [280, 220, 170]
+    BIRD_HEIGHTS = [280, 240, 170]
 
 
-    def __init__(self, image):
+    def __init__(self):
         self.type = 0
         super().__init__(BIRD, self.type)
         self.rect.y = self.BIRD_HEIGHTS[random.randint(0, 2)]

@@ -27,7 +27,8 @@ class Menu:
             if event.type == pygame.QUIT:
                 self.running = False
                 self.playing = False
-            elif event.type == pygame.K_DOWN:
+            elif event.type == pygame.KEYDOWN:
+                print("Play")
                 game.run()
 
     def reset_screen_color(self, screen):

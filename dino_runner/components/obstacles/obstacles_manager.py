@@ -1,9 +1,10 @@
 import pygame
 import random
 
-from dino_runner.utils.constants import DEAD
 from dino_runner.components.obstacles.Bird import Bird
 from dino_runner.components.obstacles.Cactus import Cactus
+from dino_runner.utils.constants import DEAD_SOUND
+from dino_runner.utils.constants import SHIELD_TYPE
 
 
 class ObstacleManager:
@@ -19,7 +20,7 @@ class ObstacleManager:
             cactus_type = 'LARGE'
             obstacle = Cactus(cactus_type)
             return obstacle
-        else:
+        elif obstacle_type == 2:
             obstacle = Bird()
             return obstacle
             
@@ -33,12 +34,15 @@ class ObstacleManager:
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.dino_rect.colliderect(obstacle.rect):
-                game.playing = False
-                self.player.dino.dead()
-                game.self.death_count += 1
-                pygame.time.delay(2000)
-                game.death_count.update()
-                break
+                if game.player.type != SHIELD_TYPE:
+                    game.playing = False
+                    DEAD_SOUND.play()
+                    game.player.dead()
+                    pygame.time.delay(2000)
+                    game.death_count.update()
+                    break
+                else:
+                    self.obstacles.remove(obstacle)
 
     def draw(self, screen):
         for obstacle in self.obstacles:
