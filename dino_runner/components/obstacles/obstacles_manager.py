@@ -1,6 +1,7 @@
 import pygame
 import random
 
+from dino_runner.utils.constants import DEAD
 from dino_runner.components.obstacles.Bird import Bird
 from dino_runner.components.obstacles.Cactus import Cactus
 
@@ -33,8 +34,10 @@ class ObstacleManager:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.dino_rect.colliderect(obstacle.rect):
                 game.playing = False
+                self.player.dino.dead()
                 game.self.death_count += 1
                 pygame.time.delay(2000)
+                game.death_count.update()
                 break
 
     def draw(self, screen):
